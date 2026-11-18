@@ -1,18 +1,6 @@
 
-const fs=require('fs')
 
-const caminhoArquivo=process.argv
-const link=caminhoArquivo[2]
 
-fs.readFile(link,'utf-8',(erro,texto)=>{
-   if(erro){
-    console.log('qual é o erro ',erro.code)
-    return
-   }
-    
-    contaPalavras(texto)
- 
-})
 
 //criar um array com as palavras
 //contar as ocorrencias
@@ -25,17 +13,17 @@ fs.readFile(link,'utf-8',(erro,texto)=>{
 }
 */
 
-function contaPalavras(texto){
+export function contaPalavras(texto){
     const paragrafos=extraiParagrafos(texto)
  const contagem=paragrafos
     .flatMap((paragrafo)=>{
         if(!paragrafo) return [];
         return verificaPalavrasDuplicadas(paragrafo)
     })
- 
-   console.log(contagem)
+ return contagem
+ //  console.log(contagem)
 }
-function extraiParagrafos(texto){
+export function extraiParagrafos(texto){
 return texto.toLowerCase().split('\n')
 }
 
